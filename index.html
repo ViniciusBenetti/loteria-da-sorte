@@ -1,62 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loteria da sorte 🍀</title>
-    <link rel="icon" href="https://vinixodin.com/loja/fotos/vinix.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link                                                   href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loteria da sorte 🍀</title>
+  <link rel="icon" href="https://vinixodin.com/loja/fotos/vinix.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      background: url(background.svg);
+      font-family: "Commissioner", sans-serif;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    header.escolher-jogo {
+      background: gold;
+      padding: 15px 25px;
+      border-radius: 20px;
+      font-family: "Teachers", sans-serif;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .escolher-jogo-div {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 12px 18px;
+      border: black solid 2px;
+      border-radius: 12px;
+      background: rgb(88, 88, 88);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+    button:hover {
+      background: rgb(176, 176, 176);
+      color: black;
+    }
+    button:active {
+      box-shadow: inset black 2px 2px 3px;
+    }
+
+    .mega-sena-gerar,
+    .loto-facil-gerar {
+      display: none;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .mega-sena-outputs,
+    .loto-facil-outputs {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 500px;
+    }
+    .loto-facil-outputs input {
+  min-width: 80%;
+  font-size: 20px;
+}
+
+    input {
+  border: solid 2px black;
+  border-radius: 8px;
+  padding: 10px 15px;
+  min-height: 45px;
+  min-width: 120px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+  flex: 1 1 40%;   /* inputs ocupam espaço flexível */
+  max-width: 220px;
+}
+
+
+    .voltar {
+      display: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: crimson;
+      color: white;
+      font-weight: bold;
+    }
+    .voltar:hover {
+      background: darkred;
+    }
+    
+    /* Botão de doar fixo no canto superior direito */
+    .doar-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: crimson;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+    .doar-btn:hover {
+      background: darkred;
+      transform: scale(1.05);
+    }
+    .doar-btn:active {
+      transform: scale(0.95);
+    }
+    .doar-btn span {
+      font-size: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header class="escolher-jogo">
-        <h1>ESCOLHA O JOGO</h1>
-    </header>
+  <header class="escolher-jogo">
+    <h1>ESCOLHA O JOGO</h1>
+  </header>
 
-    <div class="escolher-jogo-div">
-        <button>MEGA-SENA</button>
-        <button>LOTO FÁCIL</button>
-    </div>
+  <div class="escolher-jogo-div">
+    <button>MEGA-SENA</button>
+    <button>LOTO FÁCIL</button>
+  </div>
 
-    <div class="loto-facil-gerar">
-        <button>GERAR NUMEROS</button>
-    
-    </div>
+  <div class="loto-facil-gerar">
+    <button>GERAR NÚMEROS</button>
+  </div>
 
+  <div class="mega-sena-gerar">
+    <button>GERAR NÚMEROS</button>
+  </div>
 
-    <div class="mega-sena-gerar">
-        <button>GERAR NUMEROS</button>
-    
-    </div>
+  <div class="loto-facil-outputs">
+    <input type="text"/>
+    <input type="text"/>
+  </div>
 
-    <div class="loto-facil-outputs">
-        <input type="text"/>
-        <input type="text"/>
-    </div>
+  <div class="mega-sena-outputs">
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+  </div>
 
-    <div class="mega-sena-outputs">
-
-        <div>
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
-    </div>
-    <div>
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
-    </div>
-    </div>
-    <button class="voltar">VOLTAR</button>
-
-
-    
+  <button class="voltar">VOLTAR</button>
+  
+  <!-- Botão de doar fixo -->
+   <a href="https://www.paypal.com/donate/?hosted_button_id=YQ8YYZEUH2VHC" target="_blank">
+  <button class="doar-btn">
+    <span>❤️</span>
+    Doar
+  </button>
+</a>
+  <script src="script.js"></script>
 </body>
-    <script src="script.js"></script>
 </html>

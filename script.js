@@ -1,3 +1,5 @@
+
+
 var titulo = document.querySelector(".escolher-jogo")
 var conteudoMenu = document.querySelector(".escolher-jogo-div");
 var megaSenaGerar = document.querySelector(".mega-sena-gerar");
@@ -59,33 +61,24 @@ if(lotoFacilGerar.style.visibility != "hidden"){
 }
 
 
-
 function lotoFacil(){
-    titulo.style.transform = "translateY(-50vh)"
-    titulo.style.visibility = "hidden"
-    conteudoMenu.style.transform = "translateY(-50vh)"
-    conteudoMenu.style.visibility = "hidden"
-    lotoFacilGerar.style.transform = "translateY(-50vh)"
-    lotoFacilOutputs.style.transform = "translateY(-50vh)"
-    voltar.style.transform = "translateY(-40vh)"
-    lotoFacilOutputs.style.visibility = "visible"
-    lotoFacilGerar.style.visibility = "visible"
-    voltar.style.visibility = "visible"
+    titulo.style.display = "none";
+    conteudoMenu.style.display = "none";
 
-
+    lotoFacilGerar.style.display = "flex";
+    lotoFacilOutputs.style.display = "flex";
+    voltar.style.display = "inline-block";
 }
+
 function megaSena(){
-    titulo.style.transform = "translateY(-50vh)"
-    titulo.style.visibility = "hidden"
-    conteudoMenu.style.transform = "translateY(-50vh)"
-    conteudoMenu.style.visibility = "hidden"
-    voltar.style.transform = "translateY(-40vh)"
-    megaSenaGerar.style.transform = "translateY(-50vh)"
-    megaSenaOutputs.style.transform = "translateY(-50vh)"
-    megaSenaOutputs.style.visibility = "visible"
-    megaSenaGerar.style.visibility = "visible"
-    voltar.style.visibility = "visible"
+    titulo.style.display = "none";
+    conteudoMenu.style.display = "none";
+
+    megaSenaGerar.style.display = "flex";
+    megaSenaOutputs.style.display = "flex";
+    voltar.style.display = "inline-block";
 }
+
 
 function gerarLotoFacil() {
   // Criando um array com todos os números possíveis (1 a 25)
